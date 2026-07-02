@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaiApp - Sistema de Gestión</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="d-flex">
+        
+        <aside class="sidebar-custom p-3 flex-shrink-0 d-none d-md-block">
+            <div class="d-flex align-items-center gap-2 mb-4 p-2">
+                <span class="fs-4 bg-light p-2 rounded-3">💅</span>
+                <div>
+                    <div class="fw-bold lh-1">NaiApp</div>
+                    <small class="text-muted fs-xs">Sistema de Gestión</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 bg-light p-2 rounded-3 mb-4">
+                <div class="avatar-pill text-white rounded-circle d-flex align-items-center justify-content-center fw-bold">M</div>
+                <div>
+                    <div class="fw-semibold small">María García</div>
+                    <small class="text-muted fs-xs">Administrador</small>
+                </div>
+            </div>
+
+            <nav class="nav flex-column gap-1">
+                <button class="menu-item-custom active" onclick="changeSection('resumen')">📊 Resumen</button>
+                <button class="menu-item-custom" onclick="changeSection('agenda')">📅 Agenda / Citas</button>
+                <button class="menu-item-custom" onclick="changeSection('usuarios')">👥 Usuarios</button>
+                <button class="menu-item-custom" onclick="changeSection('servicios')">✨ Servicios</button>
+                <button class="menu-item-custom" onclick="changeSection('pagos')">💵 Registro de Pagos</button>
+            </nav>
+        </aside>
+
+        <main class="flex-grow-1 min-vh-100 d-flex flex-column style-main">
+            
+            <header class="bg-white border-bottom px-4 py-3 d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="h5 fw-bold mb-0">Bienvenido, María García</h1>
+                    <small class="text-muted">Panel de Administración</small>
+                </div>
+                <div class="text-end small d-none d-sm-block">
+                    <div class="fw-bold">María García</div>
+                    <span class="text-muted fs-xs">admin@naiapp.com</span>
+                </div>
+            </header>
+
+            <div class="p-4 container-fluid">
+
+                <div id="sec-resumen" class="section-content active">
+                    <div class="mb-4">
+                        <h2 class="h4 fw-bold mb-0">Panel de Administración</h2>
+                        <small class="text-secondary">Vista general del sistema</small>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="card border-0 shadow-sm p-3 d-flex flex-row justify-content-between align-items-center rounded-4">
+                                <div>
+                                    <span class="small text-secondary fw-medium">Total Usuarios</span>
+                                    <h3 class="fw-bold my-1" id="kpi-users">0</h3>
+                                    <small class="text-success fw-semibold fs-xs">+12% este mes</small>
+                                </div>
+                                <span class="fs-3 p-2 rounded-3 bg-teal-light">👥</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="card border-0 shadow-sm p-3 d-flex flex-row justify-content-between align-items-center rounded-4">
+                                <div>
+                                    <span class="small text-secondary fw-medium">Citas del Mes</span>
+                                    <h3 class="fw-bold my-1" id="kpi-citas">0</h3>
+                                    <small class="text-success fw-semibold fs-xs">+8% este mes</small>
+                                </div>
+                                <span class="fs-3 p-2 rounded-3 bg-purple-light-card">📅</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="card border-0 shadow-sm p-3 d-flex flex-row justify-content-between align-items-center rounded-4">
+                                <div>
+                                    <span class="small text-secondary fw-medium">Ingresos</span>
+                                    <h3 class="fw-bold my-1" id="kpi-ingresos">$0</h3>
+                                    <small class="text-success fw-semibold fs-xs">+18% este mes</small>
+                                </div>
+                                <span class="fs-3 p-2 rounded-3 bg-green-light">💵</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xl-3">
+                            <div class="card border-0 shadow-sm p-3 d-flex flex-row justify-content-between align-items-center rounded-4">
+                                <div>
+                                    <span class="small text-secondary fw-medium">Total Servicios</span>
+                                    <h3 class="fw-bold my-1" id="kpi-services">0</h3>
+                                    <small class="text-warning fs-xs">⭐⭐⭐⭐⭐</small>
+                                </div>
+                                <span class="fs-3 p-2 rounded-3 bg-yellow-light">⭐</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-7">
+                            <div class="card border-0 shadow-sm p-4 rounded-4 bg-white">
+                                <h4 class="h6 fw-bold mb-1">Ventas Mensuales</h4>
+                                <p class="text-muted small mb-4">Ingresos de los últimos 6 meses</p>
+                                <div class="bar-chart-mock">
+                                    <div class="bar-wrapper"><div class="bar style-b1"></div><span class="small text-muted">Ene</span></div>
+                                    <div class="bar-wrapper"><div class="bar style-b2"></div><span class="small text-muted">Feb</span></div>
+                                    <div class="bar-wrapper"><div class="bar style-b3"></div><span class="small text-muted">Mar</span></div>
+                                    <div class="bar-wrapper"><div class="bar style-b4"></div><span class="small text-muted">Abr</span></div>
+                                    <div class="bar-wrapper"><div class="bar style-b5"></div><span class="small text-muted">May</span></div>
+                                    <div class="bar-wrapper"><div class="bar style-b6"></div><span class="small text-muted">Jun</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="card border-0 shadow-sm p-4 rounded-4 bg-white">
+                                <h4 class="h6 fw-bold mb-1">Servicios Más Solicitados</h4>
+                                <p class="text-muted small mb-4">Distribución por tipo de servicio</p>
+                                <div class="d-flex align-items-center justify-content-around">
+                                    <div class="pie-circle"></div>
+                                    <div class="small text-secondary fs-xs">
+                                        <div><span class="badge rounded-circle me-1 leg-1"> </span> Corte: 35%</div>
+                                        <div><span class="badge rounded-circle me-1 leg-2"> </span> Mani: 25%</div>
+                                        <div><span class="badge rounded-circle me-1 leg-3"> </span> Tinte: 20%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sec-agenda" class="section-content">
+                    <div class="card border-0 shadow-sm p-4 rounded-4 bg-white mb-4">
+                        <h2 class="h4 fw-bold mb-3">📅 Agenda / Citas</h2>
+                        <form id="form-agenda" class="row g-3 align-items-end">
+                            <input type="hidden" id="agenda-id">
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Cliente</label>
+                                <input type="text" id="agenda-cliente" class="form-control" placeholder="Nombre" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Servicio</label>
+                                <input type="text" id="agenda-servicio" class="form-control" placeholder="Ej. Manicure" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Fecha y Hora</label>
+                                <input type="datetime-local" id="agenda-fecha" class="form-control" required>
+                            </div>
+                            <div class="col-12 text-end">
+                                <button type="submit" id="btn-agenda" class="btn btn-purple-custom text-white px-4">Agendar Cita</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="table-responsive bg-white rounded-4 shadow-sm border">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light"><tr><th>Cliente</th><th>Servicio</th><th>Fecha y Hora</th><th>Acciones</th></tr></thead>
+                            <tbody id="tabla-agenda"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="sec-usuarios" class="section-content">
+                    <div class="card border-0 shadow-sm p-4 rounded-4 bg-white mb-4">
+                        <h2 class="h4 fw-bold mb-3">👥 Gestión de Usuarios</h2>
+                        <form id="form-usuarios" class="row g-3 align-items-end">
+                            <input type="hidden" id="usuarios-id">
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Nombre Completo</label>
+                                <input type="text" id="usuarios-nombre" class="form-control" placeholder="Ej. Camila" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Teléfono</label>
+                                <input type="tel" id="usuarios-telefono" class="form-control" placeholder="Número" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small fw-semibold">Rol del Sistema</label>
+                                <select id="usuarios-rol" class="form-select" required>
+                                    <option value="Cliente">Cliente</option>
+                                    <option value="Estilista">Estilista</option>
+                                    <option value="Administrador">Administrador</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1 text-end">
+                                <button type="submit" id="btn-usuarios" class="btn btn-purple-custom text-white w-100">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="table-responsive bg-white rounded-4 shadow-sm border">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light"><tr><th>Nombre</th><th>Teléfono</th><th>Rol</th><th>Acciones</th></tr></thead>
+                            <tbody id="tabla-usuarios"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="sec-servicios" class="section-content">
+                    <div class="card border-0 shadow-sm p-4 rounded-4 bg-white mb-4">
+                        <h2 class="h4 fw-bold mb-3">✨ Catálogo de Servicios</h2>
+                        <form id="form-servicios" class="row g-3 align-items-end">
+                            <input type="hidden" id="servicios-id">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-semibold">Nombre del Servicio</label>
+                                <input type="text" id="servicios-nombre" class="form-control" placeholder="Ej. Pedicure" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Precio ($)</label>
+                                <input type="number" id="servicios-precio" class="form-control" placeholder="Monto" required>
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <button type="submit" id="btn-servicios" class="btn btn-purple-custom text-white w-100">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="table-responsive bg-white rounded-4 shadow-sm border">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light"><tr><th>Servicio</th><th>Precio</th><th>Acciones</th></tr></thead>
+                            <tbody id="tabla-servicios"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="sec-pagos" class="section-content">
+                    <div class="card border-0 shadow-sm p-4 rounded-4 bg-white mb-4">
+                        <h2 class="h4 fw-bold mb-3">💵 Historial de Transacciones</h2>
+                        <form id="form-pagos" class="row g-3 align-items-end">
+                            <input type="hidden" id="pagos-id">
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Concepto / Cliente</label>
+                                <input type="text" id="pagos-concepto" class="form-control" placeholder="Descripción" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-semibold">Monto ($)</label>
+                                <input type="number" id="pagos-monto" class="form-control" placeholder="Valor numérico" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small fw-semibold">Método de Pago</label>
+                                <select id="pagos-metodo" class="form-select" required>
+                                    <option value="Efectivo">Efectivo</option>
+                                    <option value="Transferencia">Transferencia</option>
+                                    <option value="Tarjeta">Tarjeta</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1 text-end">
+                                <button type="submit" id="btn-pagos" class="btn btn-purple-custom text-white w-100">Pagar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="table-responsive bg-white rounded-4 shadow-sm border">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light"><tr><th>Concepto</th><th>Monto</th><th>Método</th><th>Acciones</th></tr></thead>
+                            <tbody id="tabla-pagos"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function changeSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.menu-item-custom').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(`sec-${sectionId}`).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function setupCRUD(modulo, campos) {
+            const form = document.getElementById(`form-${modulo}`);
+            const tabla = document.getElementById(`tabla-${modulo}`);
+            const btnSubmit = document.getElementById(`btn-${modulo}`);
+            
+            let datos = JSON.parse(localStorage.getItem(`naiapp_${modulo}`)) || [];
+
+            const listar = () => {
+                tabla.innerHTML = '';
+                datos.forEach(item => {
+                    const tr = document.createElement('tr');
+                    let celdas = '';
+                    campos.forEach(campo => {
+                        let valor = item[campo];
+                        if(campo === 'precio' || campo === 'monto') valor = '$' + parseInt(valor).toLocaleString();
+                        if(campo === 'fecha') valor = new Date(valor).toLocaleString();
+                        celdas += `<td>${valor}</td>`;
+                    });
+                    celdas += `
+                        <td>
+                            <button class="btn btn-sm btn-warning me-1" onclick="editarItem('${modulo}', '${item.id}')">✏️</button>
+                            <button class="btn btn-sm btn-danger" onclick="eliminarItem('${modulo}', '${item.id}')">🗑️</button>
+                        </td>
+                    `;
+                    tr.innerHTML = celdas;
+                    tabla.appendChild(tr);
+                });
+                actualizarKPIs();
+            };
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const idHidden = document.getElementById(`${modulo}-id`).value;
+                let obj = { id: idHidden || Date.now().toString() };
+                campos.forEach(campo => { obj[campo] = document.getElementById(`${modulo}-${campo}`).value; });
+
+                if (!idHidden) { datos.push(obj); } 
+                else { datos = datos.map(item => item.id === idHidden ? obj : item); btnSubmit.innerText = "Guardar"; }
+
+                localStorage.setItem(`naiapp_${modulo}`, JSON.stringify(datos));
+                form.reset();
+                document.getElementById(`${modulo}-id`).value = "";
+                listar();
+            });
+
+            window[`edit_${modulo}`] = (id) => {
+                const item = datos.find(i => i.id === id);
+                if (item) {
+                    document.getElementById(`${modulo}-id`).value = item.id;
+                    campos.forEach(campo => { document.getElementById(`${modulo}-${campo}`).value = item[campo]; });
+                    btnSubmit.innerText = "Actualizar";
+                }
+            };
+
+            window[`delete_${modulo}`] = (id) => {
+                if(confirm('¿Deseas eliminar este registro?')) {
+                    datos = datos.filter(i => i.id !== id);
+                    localStorage.setItem(`naiapp_${modulo}`, JSON.stringify(datos));
+                    listar();
+                }
+            };
+            listar();
+        }
+
+        function editarItem(modulo, id) { window[`edit_${modulo}`](id); }
+        function eliminarItem(modulo, id) { window[`delete_${modulo}`](id); }
+
+        function actualizarKPIs() {
+            if(!document.getElementById('kpi-users')) return;
+            const u = (JSON.parse(localStorage.getItem('naiapp_usuarios')) || []).length;
+            const c = (JSON.parse(localStorage.getItem('naiapp_agenda')) || []).length;
+            const s = (JSON.parse(localStorage.getItem('naiapp_servicios')) || []).length;
+            const p = JSON.parse(localStorage.getItem('naiapp_pagos')) || [];
+            const totalPagos = p.reduce((acc, curr) => acc + parseInt(curr.monto || 0), 0);
+
+            document.getElementById('kpi-users').innerText = u;
+            document.getElementById('kpi-citas').innerText = c;
+            document.getElementById('kpi-services').innerText = s;
+            document.getElementById('kpi-ingresos').innerText = '$' + totalPagos.toLocaleString();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setupCRUD('agenda', ['cliente', 'servicio', 'fecha']);
+            setupCRUD('usuarios', ['nombre', 'telefono', 'rol']);
+            setupCRUD('servicios', ['nombre', 'precio']);
+            setupCRUD('pagos', ['concepto', 'monto', 'metodo']);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

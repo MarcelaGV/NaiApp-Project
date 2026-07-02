@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NaiApp - Iniciar Sesión</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="login.css">
+</head>
+<body class="d-flex align-items-center justify-content-center py-5">
+
+<div class="container login-container-width">
+  
+  <div class="card border-0 rounded-4 shadow-sm p-3 mb-3 text-center">
+    <a href="index.html" class="fw-semibold text-decoration-none color-purple-600">
+      <svg class="me-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5 12 3l9 6.5"></path><path d="M5 10v10a1 1 0 0 0 1 1h3v-6h6v6h3a1 1 0 0 0 1-1V10"></path></svg>
+      Volver a NaiApp
+    </a>
+  </div>
+
+  <div class="card border-0 rounded-4 shadow-lg p-4 p-sm-5 text-center bg-white">
+    <div class="brand-icon mb-3">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=300&auto=format&fit=crop" class="w-100 h-100 object-fit-cover" alt="Logo">
+    </div>
+
+    <h1 class="h3 fw-bold mb-1">NaiApp</h1>
+    <p class="small text-secondary mb-4">Sistema de Gestión de Salón de Belleza</p>
+
+    <form class="text-start">
+      <div class="mb-3">
+        <label for="email" class="form-label small fw-semibold">Correo Electrónico</label>
+        <div class="input-group">
+          <span class="input-group-text input-group-text-custom">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9aa0ab" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 6 10-6"></path></svg>
+          </span>
+          <input type="email" id="email" class="form-control form-control-custom py-2" placeholder="ejemplo@correo.com" required>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="password" class="form-label small fw-semibold">Contraseña</label>
+        <div class="input-group">
+          <span class="input-group-text input-group-text-custom">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9aa0ab" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </span>
+          <input type="password" id="password" class="form-control form-control-custom py-2" placeholder="Ingrese su contraseña" required>
+          <button type="button" class="btn btn-eye-custom" onclick="togglePassword()">
+            <svg id="eyeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9aa0ab" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path></svg>
+          </button>
+        </div>
+      </div>
+
+      <a class="btn btn-login-custom w-100 py-2.5 fw-semibold rounded-3 text-decoration-none d-block text-center mb-3" href="dashboard.html">Iniciar Sesión</a>
+    </form>
+
+    <a href="#" class="small text-decoration-none d-block mb-2 color-purple-600 fw-medium">¿Olvidaste tu contraseña?</a>
+    <p class="small text-secondary">¿No tienes cuenta? <a href="#" class="fw-bold text-decoration-none color-purple-600">Registrarse</a></p>
+
+    <hr class="my-4 text-muted">
+
+    <p class="small text-secondary fw-semibold mb-2">Credenciales de demostración:</p>
+    <div class="bg-light p-2 rounded-3 text-start small text-secondary lh-lg fs-xs">
+      <div><b>Admin:</b> admin@naiapp.com | admin123</div>
+      <div><b>Empleado:</b> laura@naiapp.com | laura123</div>
+    </div>
+  </div>
+</div>
+
+<a href="#" class="help-btn shadow">?</a>
+
+<script>
+  function togglePassword(){
+    const input = document.getElementById('password');
+    if(input.type === 'password'){
+      input.type = 'text';
+    } else {
+      input.type = 'password';
+    }
+  }
+</script>
+</body>
+</html>

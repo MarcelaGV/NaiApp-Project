@@ -1,0 +1,92 @@
+:root {
+  --purple-500: #a56de0;
+  --purple-600: #9d5fdb;
+  --purple-700: #8a4bcf;
+  --purple-bg-start: #b98be8;
+  --purple-bg-end: #c9a3ec;
+  --text-dark: #1f2430;
+  --input-bg: #f7f6fa;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, var(--purple-bg-start), var(--purple-bg-end));
+  min-height: 100vh;
+}
+
+.login-container-width {
+  max-width: 440px;
+}
+
+.color-purple-600 {
+  color: var(--purple-600) !important;
+}
+
+.brand-icon {
+  width: 84px;
+  height: 84px;
+  border-radius: 20px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #d9c3ee, #c6a3e6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.input-group-text-custom {
+  background-color: var(--input-bg);
+  border-right: none;
+  border-color: #e6e2ee;
+}
+
+.form-control-custom {
+  background-color: var(--input-bg);
+  border-left: none;
+  border-color: #e6e2ee;
+}
+
+.form-control-custom:focus {
+  background-color: white;
+  border-color: var(--purple-500);
+  box-shadow: none;
+}
+
+.btn-eye-custom {
+  border-left: 0;
+  border-color: #e6e2ee;
+  background-color: var(--input-bg);
+}
+
+.btn-login-custom {
+  background: linear-gradient(135deg, var(--purple-500), var(--purple-700));
+  color: white;
+  border: none;
+  box-shadow: 0 8px 20px rgba(157,95,219,0.35);
+}
+
+.btn-login-custom:hover {
+  color: white;
+  box-shadow: 0 10px 26px rgba(157,95,219,0.45);
+}
+
+.fs-xs {
+  font-size: 11.5px;
+}
+
+.help-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #1f2430;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-decoration: none;
+}
